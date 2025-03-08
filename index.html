@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML March - IIEST Shibpur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader-wrapper">
+        <div class="loader-content">
+            <div class="loader-text">ML MARCH</div>
+            <div class="loader-tagline">A Machine Learning Sprint at IIEST Shibpur</div>
+            <div class="zigzag-loader"></div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">ML MARCH</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li class="theme-toggle">
+                <i class="fas fa-moon icon" id="theme-icon"></i>
+            </li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>ML March</h1>
+            <h2>A Machine Learning Sprint</h2>
+            <p>Join us for a month-long journey into the world of Machine Learning at the Indian Institute of Engineering Science and Technology, Shibpur. Master everything from fundamentals to advanced applications.</p>
+            <a href="#schedule" class="btn">View Schedule</a>
+            <div class="hero-image">
+                <img src="/api/placeholder/600/400" alt="ML March Hero Image">
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About ML March</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ML March is a comprehensive one-month sprint focusing on Machine Learning organized collaboratively by <strong>CodeIIEST - The Official Coding Club of IIEST Shibpur</strong> and <strong>Google Developer Students Club (GDSC) @IIEST</strong>.</p>
+                    <p>The program is designed to take participants from the basics of Data Science to advanced topics in Machine Learning. Through hands-on workshops and expert-led sessions, participants will gain practical experience in Neural Networks, Computer Vision, Natural Language Processing, Robotics, and MLOps.</p>
+                    <p>Whether you're a beginner looking to start your ML journey or an experienced developer wanting to expand your knowledge, ML March offers valuable insights and practical skills to advance your career in the field of Artificial Intelligence.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/500/400" alt="About ML March">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule">
+        <div class="container">
+            <h2 class="section-title">Session Schedule</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Week 1</div>
+                        <h3>Introduction to Data Science and Statistical Methods for ML</h3>
+                        <p>Instructors: Sarah Jane Topno & Suchana Hazra</p>
+                        <p>A foundational overview of key statistical methods and data science principles essential for machine learning.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Week 1</div>
+                        <h3>Introduction to Machine Learning</h3>
+                        <p>Instructors: Harsh Raj Gupta, Sayan Roy, Arkapravo Das</p>
+                        <p>Explore core ML concepts, algorithms, and implementation techniques.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Week 2</div>
+                        <h3>Implementation of Machine Learning Models and Applications</h3>
+                        <p>Instructors: Angshuman Roy, Drup Acharya, Subhrajit Deb</p>
+                        <p>Hands-on session on implementing various ML models and exploring real-world applications.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Week 2</div>
+                        <h3>Introduction to Artificial Neural Networks</h3>
+                        <p>Instructors: Angshuman Roy, Drup Acharya, Subhrajit Deb, Sanju De</p>
+                        <p>Deep dive into neural network architectures, training methodologies, and applications.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Week 3</div>
+                        <h3>Introduction to Natural Language Processing</h3>
+                        <p>Instructors: Soham Haldar, Sarah Jane Topno</p>
+                        <p>Learn how machines understand, interpret, and generate human language.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Week 3</div>
+                        <h3>Computer Vision</h3>
+                        <p>Instructors: Drup Acharya, Sanju De, Angshuman Roy, Soham Haldar, Subhranil Nandy, Subhrajit Deb</p>
+                        <p>Discover techniques for image analysis, object detection, and visual recognition systems.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Week 4</div>
+                        <h3>Robotics</h3>
+                        <p>Instructor: Sanju De</p>
+                        <p>Explore the integration of ML techniques in robotics and autonomous systems.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Week 4</div>
+                        <h3>MLOps</h3>
+                        <p>Instructor: Swastika Kar</p>
+                        <p>Learn best practices for deploying, managing, and scaling machine learning models in production.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Past Events Gallery</h2>
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide">
+                        <img src="/api/placeholder/900/500" alt="ML March Past Event 1">
+                    </div>
+                    <div class="slide">
+                        <img src="/api/placeholder/900/500" alt="ML March Past Event 2">
+                    </div>
+                    <div class="slide">
+                        <img src="/api/placeholder/900/500" alt="ML March Past Event 3">
+                    </div>
+                    <div class="slide">
+                        <img src="/api/placeholder/900/500" alt="ML March Past Event 4">
+                    </div>
+                </div>
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Join ML March?</h2>
+            <p>Enhance your understanding of Machine Learning and connect with industry experts and fellow enthusiasts. Register now to secure your spot!</p>
+            <a href="#" class="btn">Register Now</a>
+        </div>
+    </section>
+
+    <!-- Team Section (for team.html) -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-grid">
+                <!-- Data Science & Statistics -->
+                <div class="team-category">
+                    <h3>Data Science & Statistics</h3>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="member-image">👩‍🔬</div>
+                            <h4>Sarah Jane Topno</h4>
+                            <p>Data Science Lead</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-image">👩‍💻</div>
+                            <h4>Suchana Hazra</h4>
+                            <p>Statistical Methods Expert</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Machine Learning -->
+                <div class="team-category">
+                    <h3>Machine Learning</h3>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="member-image">👨‍🔬</div>
+                            <h4>Harsh Raj Gupta</h4>
+                            <p>ML Fundamentals Lead</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-image">👨‍💻</div>
+                            <h4>Sayan Roy</h4>
+                            <p>Algorithms Specialist</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-image">🧠</div>
+                            <h4>Arkapravo Das</h4>
+                            <p>ML Implementation Expert</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ML Models & Applications -->
+                <div class="team-category">
+                    <h3>ML Models & Applications</h3>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="member-image">👨‍🏫</div>
+                            <h4>Angshuman Roy</h4>
+                            <p>ML Models Lead</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-image">👩‍🏫</div>
+                            <h4>Drup Acharya</h4>
+                            <p>Applications Specialist</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-image">👨‍💼</div>
+                            <h4>Subhrajit Deb</h4>
+                            <p>Industry Applications Expert</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neural Networks -->
+                <div class="team-category">
+                    <h3>Neural Networks</h3>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="member-image">🤖</div>
+                            <h4>Sanju De</h4>
+                            <p>Neural Networks Architect</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NLP -->
+                <div class="team-category">
+                    <h3>Natural Language Processing</h3>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="member-image">🔤</div>
+                            <h4>Soham Haldar</h4>
+                            <p>NLP Lead</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer Vision -->
+                <div class="team-category">
+                    <h3>Computer Vision</h3>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="member-image">👁️</div>
+                            <h4>Subhranil Nandy</h4>
+                            <p>Computer Vision Specialist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Robotics -->
+                <div class="team-category">
+                    <h3>Robotics</h3>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="member-image">🦾</div>
+                            <h4>Sanju De</h4>
+                            <p>Robotics Lead</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MLOps -->
+                <div class="team-category">
+                    <h3>MLOps</h3>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="member-image">⚙️</div>
+                            <h4>Swastika Kar</h4>
+                            <p>MLOps Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section (for resources.html) -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <h2 class="section-title">Learning Resources</h2>
+            <div class="resources-grid">
+                <!-- Data Science & Statistics -->
+                <div class="resource-category">
+                    <h2>Data Science & Statistics</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <div class="resource-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h3>Introduction to Statistical Learning</h3>
+                                <p>A comprehensive guide to the statistical foundations of machine learning.</p>
+                                <a href="#" class="resource-link">View Resource <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <div class="resource-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h3>Python for Data Analysis</h3>
+                                <p>Learn how to use Python for effective data analysis and preparation.</p>
+                                <a href="#" class="resource-link">View Resource <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Machine Learning -->
+                <div class="resource-category">
+                    <h2>Machine Learning</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <div class="resource-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h3>Machine Learning Fundamentals</h3>
+                                <p>Core concepts and algorithms in machine learning with practical examples.</p>
+                                <a href="#" class="resource-link">View Resource <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <div class="resource-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h3>Scikit-Learn Tutorial</h3>
+                                <p>Hands-on tutorial for implementing ML models with Scikit-Learn.</p>
+                                <a href="#" class="resource-link">View Resource <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neural Networks -->
+                <div class="resource-category">
+                    <h2>Neural Networks</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <div class="resource-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h3>Deep Learning with TensorFlow</h3>
+                                <p>Comprehensive guide to building neural networks with TensorFlow.</p>
+                                <a href="#" class="resource-link">View Resource <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <div class="resource-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h3>Neural Network Architectures</h3>
+                                <p>Explore different neural network structures and their applications.</p>
+                                <a href="#" class="resource-link">View Resource <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NLP & Computer Vision -->
+                <div class="resource-category">
+                    <h2>NLP & Computer Vision</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <div class="resource-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h3>Natural Language Processing with Python</h3>
+                                <p>Learn text processing and analysis techniques using Python.</p>
+                                <a href="#" class="resource-link">View Resource <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <div class="resource-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="resource-info">
+                                <h3>Computer Vision Fundamentals</h3>
+                                <p>Introduction to image processing and object detection algorithms.</p>
+                                <a href="#" class="resource-link">View Resource <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>ML March</h3>
+                    <p>A month-long Machine Learning Sprint at IIEST Shibpur organized by CodeIIEST and GDSC.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#schedule">Schedule</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> mlmarch@iiest.ac.in</p>
+                    <p><i class="fas fa-phone"></i> +91 1234567890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> IIEST Shibpur, Howrah, West Bengal, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ML March | IIEST Shibpur. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

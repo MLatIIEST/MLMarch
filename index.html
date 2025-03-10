@@ -15,6 +15,96 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+    <style>
+      /* Additional styles for dashboard and mobile improvements */
+      body.dashboard-active nav.main-nav {
+        display: none !important;
+      }
+      
+      .dashboard-sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+      }
+      
+      /* Mobile styles */
+      @media screen and (max-width: 768px) {
+        .dashboard-grid {
+          grid-template-columns: 1fr !important;
+        }
+        
+        .dashboard-sidebar {
+          position: fixed;
+          left: -100%;
+          top: 0;
+          width: 80%;
+          height: 100vh;
+          z-index: 1000;
+          background: var(--bg-color);
+          transition: left 0.3s ease;
+        }
+        
+        .dashboard-sidebar.active {
+          left: 0;
+        }
+        
+        .dashboard-content {
+          padding: 15px !important;
+        }
+        
+        .dashboard-header {
+          flex-direction: column;
+          align-items: flex-start !important;
+        }
+        
+        .dashboard-header h2 {
+          margin-bottom: 10px;
+        }
+        
+        .mobile-sidebar-toggle {
+          display: block !important;
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 999;
+          background: var(--primary-color);
+          color: white;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr !important;
+        }
+        
+        .resources-grid {
+          grid-template-columns: 1fr !important;
+        }
+        
+        .session-details {
+          flex-direction: column;
+          align-items: flex-start !important;
+        }
+        
+        .session-details span {
+          margin-bottom: 5px;
+        }
+        
+        .form-row {
+          flex-direction: column !important;
+        }
+        
+        .form-row .form-group {
+          width: 100% !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Toast Notification -->
@@ -43,7 +133,7 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav>
+    <nav class="main-nav">
       <div class="logo">ML MARCH</div>
       <ul class="nav-links">
         <li>
@@ -725,46 +815,24 @@
 
     <!-- Dashboard Section -->
     <div id="dashboard-page" class="dashboard">
+      <!-- Dashboard Header Bar -->
+      <div class="dashboard-header-bar">
+        <div class="dashboard-logo">ML MARCH</div>
+        <div class="dashboard-user">
+          <div class="user-icon" id="dashboard-user-icon">
+            <span>U</span>
+          </div>
+          <div class="dashboard-dropdown" id="dashboard-dropdown">
+            <a href="#" id="dashboard-profile-link"><i class="fas fa-user"></i> Profile</a>
+            <a href="#" id="dashboard-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+      
       <div class="container">
         <div class="dashboard-header">
           <h2>Welcome to Your Dashboard</h2>
           <p>Manage your ML March journey from here</p>
-        </div>
-
-        <!-- Dashboard Navigation -->
-        <div class="dashboard-nav">
-          <ul>
-            <li>
-              <a href="#" class="active" data-tab="dashboard-home"
-                ><i class="fas fa-home"></i> Home</a
-              >
-            </li>
-            <li>
-              <a href="#" data-tab="profile"
-                ><i class="fas fa-user"></i> Profile</a
-              >
-            </li>
-            <li>
-              <a href="#" data-tab="sessions"
-                ><i class="fas fa-calendar-alt"></i> My Sessions</a
-              >
-            </li>
-            <li>
-              <a href="#" data-tab="certificates"
-                ><i class="fas fa-certificate"></i> Certificates</a
-              >
-            </li>
-            <li>
-              <a href="#" data-tab="resources"
-                ><i class="fas fa-book"></i> Resources</a
-              >
-            </li>
-            <li>
-              <a href="#" id="back-to-home"
-                ><i class="fas fa-arrow-left"></i> Back to Website</a
-              >
-            </li>
-          </ul>
         </div>
 
         <div class="dashboard-grid">
@@ -814,6 +882,12 @@
               </li>
             </ul>
           </div>
+          
+          <!-- Mobile sidebar toggle button -->
+          <button class="mobile-sidebar-toggle" id="mobile-sidebar-toggle" style="display: none;">
+            <i class="fas fa-bars"></i>
+          </button>
+          
           <div class="dashboard-content">
             <!-- Dashboard Home Tab -->
             <div class="tab-content active" id="dashboard-home-content">
@@ -960,7 +1034,7 @@
             </div>
 
             <!-- Profile Tab -->
-            <!-- <div class="tab-content" id="profile-content">
+            <div class="tab-content" id="profile-content">
               <h3>My Profile</h3>
               <p>Manage your personal information and preferences</p>
 
@@ -1041,7 +1115,7 @@
                   <button type="submit" class="btn">Save Changes</button>
                 </div>
               </form>
-            </div> -->
+            </div>
 
             <!-- Sessions Tab -->
             <div class="tab-content" id="sessions-content">
@@ -1223,7 +1297,7 @@
               <div class="google-icon-wrapper">
                 <img
                   class="google-icon"
-                  src="assets/G.png"
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                   alt="Google Logo"
                 />
               </div>
@@ -1267,7 +1341,7 @@
               <div class="google-icon-wrapper">
                 <img
                   class="google-icon"
-                  src="assets/G.png"
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                   alt="Google Logo"
                 />
               </div>
@@ -1286,7 +1360,7 @@
       </div>
     </div>
 
-    <!-- <div class="modal-overlay" id="profile-completion-modal">
+    <div class="modal-overlay" id="profile-completion-modal">
       <div class="modal">
         <div class="modal-header">
           <h2 class="modal-title">Complete Your Profile</h2>
@@ -1410,7 +1484,7 @@
           </form>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <!-- JavaScript imports -->
     <script type="module" src="js/firebase-config.js"></script>
@@ -1419,5 +1493,117 @@
     <script type="module" src="js/events.js"></script>
     <script src="js/animations.js"></script>
     <script type="module" src="js/main.js"></script>
+    
+    <!-- Additional JavaScript for dashboard mobile functionality -->
+    <script>
+      // Wait for the DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        // Elements
+        const body = document.body;
+        const dashboardPage = document.getElementById('dashboard-page');
+        const websiteContent = document.getElementById('website-content');
+        const dashboardLink = document.getElementById('dashboard-link');
+        const backToHomeBtn = document.getElementById('back-to-home');
+        const backToHomeSidebar = document.getElementById('back-to-home-sidebar');
+        const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
+        const dashboardSidebar = document.querySelector('.dashboard-sidebar');
+        
+        // Function to toggle between website and dashboard
+        function showDashboard() {
+          websiteContent.style.display = 'none';
+          dashboardPage.style.display = 'block';
+          body.classList.add('dashboard-active');
+          mobileSidebarToggle.style.display = 'block';
+        }
+        
+        function showWebsite() {
+          dashboardPage.style.display = 'none';
+          websiteContent.style.display = 'block';
+          body.classList.remove('dashboard-active');
+          mobileSidebarToggle.style.display = 'none';
+        }
+        
+        // Dashboard link click handler
+        if (dashboardLink) {
+          dashboardLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showDashboard();
+          });
+        }
+        
+        // Back to website buttons click handlers
+        if (backToHomeBtn) {
+          backToHomeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showWebsite();
+          });
+        }
+        
+        if (backToHomeSidebar) {
+          backToHomeSidebar.addEventListener('click', function(e) {
+            e.preventDefault();
+            showWebsite();
+          });
+        }
+        
+        // Mobile sidebar toggle
+        if (mobileSidebarToggle) {
+          mobileSidebarToggle.addEventListener('click', function() {
+            dashboardSidebar.classList.toggle('active');
+          });
+        }
+        
+        // Close sidebar when clicking on a link (mobile)
+        const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+              dashboardSidebar.classList.remove('active');
+            }
+          });
+        });
+        
+        // Tab switching in dashboard
+        const tabLinks = document.querySelectorAll('[data-tab]');
+        tabLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all tab links
+            document.querySelectorAll('[data-tab]').forEach(el => {
+              el.classList.remove('active');
+            });
+            
+            // Add active class to clicked tab link
+            this.classList.add('active');
+            
+            // Find and activate corresponding tab content
+            const targetTab = this.getAttribute('data-tab');
+            document.querySelectorAll('.tab-content').forEach(tab => {
+              tab.classList.remove('active');
+            });
+            
+            document.getElementById(targetTab + '-content').classList.add('active');
+          });
+        });
+        
+        // Dashboard user dropdown
+        const dashboardUserIcon = document.getElementById('dashboard-user-icon');
+        const dashboardDropdown = document.getElementById('dashboard-dropdown');
+        
+        if (dashboardUserIcon && dashboardDropdown) {
+          dashboardUserIcon.addEventListener('click', function() {
+            dashboardDropdown.classList.toggle('active');
+          });
+          
+          // Close dropdown when clicking outside
+          document.addEventListener('click', function(e) {
+            if (!dashboardUserIcon.contains(e.target) && !dashboardDropdown.contains(e.target)) {
+              dashboardDropdown.classList.remove('active');
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>

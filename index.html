@@ -15,6 +15,159 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+    <style>
+      /* Additional styles for dashboard and mobile improvements */
+      body.dashboard-active {
+        overflow-x: hidden;
+      }
+      
+      body.dashboard-active nav.main-nav {
+        display: none !important;
+      }
+      
+      .dashboard-header-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 5%;
+        background-color: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .dashboard-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        letter-spacing: 1px;
+      }
+      
+      .dashboard-user {
+        position: relative;
+      }
+      
+      .dashboard-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 180px;
+        background: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: var(--box-shadow);
+        padding: 10px 0;
+        margin-top: 10px;
+        display: none;
+        z-index: 100;
+      }
+      
+      .dashboard-dropdown.active {
+        display: block;
+      }
+      
+      .dashboard-dropdown a {
+        display: block;
+        padding: 10px 15px;
+        color: var(--text-color);
+        transition: all 0.3s ease;
+      }
+      
+      .dashboard-dropdown a:hover {
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary-color);
+      }
+      
+      .dashboard-sidebar {
+        position: sticky;
+        top: 80px;
+        height: calc(100vh - 80px);
+        overflow-y: auto;
+      }
+      
+      /* Mobile styles */
+      @media screen and (max-width: 768px) {
+        .dashboard-grid {
+          grid-template-columns: 1fr !important;
+        }
+        
+        .dashboard-sidebar {
+          position: fixed;
+          left: -100%;
+          top: 0;
+          width: 80%;
+          height: 100vh;
+          z-index: 1000;
+          background: var(--bg-color);
+          transition: left 0.3s ease;
+          padding-top: 70px;
+        }
+        
+        .dashboard-sidebar.active {
+          left: 0;
+        }
+        
+        .dashboard-content {
+          padding: 15px !important;
+        }
+        
+        .dashboard-header {
+          flex-direction: column;
+          align-items: flex-start !important;
+        }
+        
+        .dashboard-header h2 {
+          margin-bottom: 10px;
+        }
+        
+        .mobile-sidebar-toggle {
+          display: block !important;
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 1001;
+          background: var(--primary-color);
+          color: white;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          border: none;
+          cursor: pointer;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr !important;
+        }
+        
+        .resources-grid {
+          grid-template-columns: 1fr !important;
+        }
+        
+        .session-details {
+          flex-direction: column;
+          align-items: flex-start !important;
+        }
+        
+        .session-details span {
+          margin-bottom: 5px;
+        }
+        
+        .form-row {
+          flex-direction: column !important;
+        }
+        
+        .form-row .form-group {
+          width: 100% !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Toast Notification -->
@@ -43,7 +196,7 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav>
+    <nav class="main-nav">
       <div class="logo">ML MARCH</div>
       <ul class="nav-links">
         <li>
@@ -74,9 +227,6 @@
           <div class="dropdown-menu" id="user-dropdown">
             <a href="#" id="dashboard-link"
               ><i class="fas fa-tachometer-alt"></i> Dashboard</a
-            >
-            <a href="#" id="profile-link"
-              ><i class="fas fa-user"></i> Profile</a
             >
             <a href="#" id="sessions-link"
               ><i class="fas fa-calendar-alt"></i> My Sessions</a
@@ -725,46 +875,23 @@
 
     <!-- Dashboard Section -->
     <div id="dashboard-page" class="dashboard">
+      <!-- Dashboard Header Bar -->
+      <div class="dashboard-header-bar">
+        <div class="dashboard-logo">ML MARCH</div>
+        <div class="dashboard-user">
+          <div class="user-icon" id="dashboard-user-icon">
+            <span>U</span>
+          </div>
+          <div class="dashboard-dropdown" id="dashboard-dropdown">
+            <a href="#" id="dashboard-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+      
       <div class="container">
         <div class="dashboard-header">
           <h2>Welcome to Your Dashboard</h2>
           <p>Manage your ML March journey from here</p>
-        </div>
-
-        <!-- Dashboard Navigation -->
-        <div class="dashboard-nav">
-          <ul>
-            <li>
-              <a href="#" class="active" data-tab="dashboard-home"
-                ><i class="fas fa-home"></i> Home</a
-              >
-            </li>
-            <li>
-              <a href="#" data-tab="profile"
-                ><i class="fas fa-user"></i> Profile</a
-              >
-            </li>
-            <li>
-              <a href="#" data-tab="sessions"
-                ><i class="fas fa-calendar-alt"></i> My Sessions</a
-              >
-            </li>
-            <li>
-              <a href="#" data-tab="certificates"
-                ><i class="fas fa-certificate"></i> Certificates</a
-              >
-            </li>
-            <li>
-              <a href="#" data-tab="resources"
-                ><i class="fas fa-book"></i> Resources</a
-              >
-            </li>
-            <li>
-              <a href="#" id="back-to-home"
-                ><i class="fas fa-arrow-left"></i> Back to Website</a
-              >
-            </li>
-          </ul>
         </div>
 
         <div class="dashboard-grid">
@@ -780,11 +907,6 @@
               <li>
                 <a href="#" class="active" data-tab="dashboard-home"
                   ><i class="fas fa-home"></i> Dashboard</a
-                >
-              </li>
-              <li>
-                <a href="#" data-tab="profile"
-                  ><i class="fas fa-user"></i> Profile</a
                 >
               </li>
               <li>
@@ -814,6 +936,12 @@
               </li>
             </ul>
           </div>
+          
+          <!-- Mobile sidebar toggle button -->
+          <button class="mobile-sidebar-toggle" id="mobile-sidebar-toggle" style="display: none;">
+            <i class="fas fa-bars"></i>
+          </button>
+          
           <div class="dashboard-content">
             <!-- Dashboard Home Tab -->
             <div class="tab-content active" id="dashboard-home-content">
@@ -958,90 +1086,6 @@
                 </a>
               </div>
             </div>
-
-            <!-- Profile Tab -->
-            <!-- <div class="tab-content" id="profile-content">
-              <h3>My Profile</h3>
-              <p>Manage your personal information and preferences</p>
-
-              <div class="avatar-upload">
-                <div class="avatar-preview" id="avatar-preview">
-                  <span id="avatar-initials">U</span>
-                </div>
-                <div class="upload-btn-wrapper">
-                  <button class="upload-btn">Change Photo</button>
-                  <input type="file" id="avatar-upload" accept="image/*" />
-                </div>
-              </div>
-
-              <form class="profile-form" id="profile-form">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="first-name">First Name</label>
-                    <input
-                      type="text"
-                      id="first-name"
-                      class="form-control"
-                      placeholder="Your first name"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="last-name">Last Name</label>
-                    <input
-                      type="text"
-                      id="last-name"
-                      class="form-control"
-                      placeholder="Your last name"
-                    />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    class="form-control"
-                    placeholder="Your email"
-                    readonly
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="phone">Phone Number</label>
-                  <input
-                    type="text"
-                    id="phone"
-                    class="form-control"
-                    placeholder="Your phone number"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="institution">Institution</label>
-                  <input
-                    type="text"
-                    id="institution"
-                    class="form-control"
-                    placeholder="Your institution"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="bio">Bio</label>
-                  <textarea
-                    id="bio"
-                    class="form-control"
-                    rows="4"
-                    placeholder="Tell us about yourself"
-                  ></textarea>
-                </div>
-
-                <div class="form-group">
-                  <button type="submit" class="btn">Save Changes</button>
-                </div>
-              </form>
-            </div> -->
 
             <!-- Sessions Tab -->
             <div class="tab-content" id="sessions-content">
@@ -1286,132 +1330,6 @@
       </div>
     </div>
 
-    <!-- <div class="modal-overlay" id="profile-completion-modal">
-      <div class="modal">
-        <div class="modal-header">
-          <h2 class="modal-title">Complete Your Profile</h2>
-          <div class="modal-close" id="profile-completion-modal-close">
-            <i class="fas fa-times"></i>
-          </div>
-        </div>
-        <div class="modal-body">
-          <div class="auth-welcome" style="margin-bottom: 20px">
-            <i
-              class="fas fa-id-card"
-              style="
-                font-size: 60px;
-                color: var(--primary-color);
-                margin-bottom: 15px;
-              "
-            ></i>
-            <h3>You're Almost There!</h3>
-            <p>
-              Please complete your profile to personalize your ML March
-              experience.
-            </p>
-          </div>
-          <form id="profile-completion-form">
-            <div class="form-group">
-              <label for="profile-phone">Phone Number</label>
-              <input
-                type="text"
-                id="profile-phone"
-                class="form-control"
-                placeholder="Your phone number"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="profile-institution">Institution</label>
-              <input
-                type="text"
-                id="profile-institution"
-                class="form-control"
-                placeholder="Your institution/university"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="profile-education">Education Level</label>
-              <select id="profile-education" class="form-control" required>
-                <option value="">Select your education level</option>
-                <option value="undergraduate">Undergraduate</option>
-                <option value="graduate">Graduate</option>
-                <option value="phd">PhD</option>
-                <option value="professional">Professional</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="profile-experience">Experience with ML</label>
-              <select id="profile-experience" class="form-control" required>
-                <option value="">Select your experience level</option>
-                <option value="beginner">Beginner (No prior experience)</option>
-                <option value="intermediate">
-                  Intermediate (Some knowledge)
-                </option>
-                <option value="advanced">
-                  Advanced (Worked on ML projects)
-                </option>
-                <option value="expert">Expert (Professional experience)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="profile-interests"
-                >Areas of Interest (select all that apply)</label
-              >
-              <div class="interest-checkboxes">
-                <label class="interest-checkbox">
-                  <input
-                    type="checkbox"
-                    name="interests"
-                    value="data-science"
-                  />
-                  <span>Data Science</span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox" name="interests" value="ml" />
-                  <span>Machine Learning</span>
-                </label>
-                <label class="interest-checkbox">
-                  <input
-                    type="checkbox"
-                    name="interests"
-                    value="deep-learning"
-                  />
-                  <span>Deep Learning</span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox" name="interests" value="nlp" />
-                  <span>NLP</span>
-                </label>
-                <label class="interest-checkbox">
-                  <input
-                    type="checkbox"
-                    name="interests"
-                    value="computer-vision"
-                  />
-                  <span>Computer Vision</span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox" name="interests" value="robotics" />
-                  <span>Robotics</span>
-                </label>
-                <label class="interest-checkbox">
-                  <input type="checkbox" name="interests" value="mlops" />
-                  <span>MLOps</span>
-                </label>
-              </div>
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn" style="width: 100%">
-                Complete Profile
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div> -->
-
     <!-- JavaScript imports -->
     <script type="module" src="js/firebase-config.js"></script>
     <script type="module" src="js/auth.js"></script>
@@ -1419,5 +1337,259 @@
     <script type="module" src="js/events.js"></script>
     <script src="js/animations.js"></script>
     <script type="module" src="js/main.js"></script>
+    
+    <!-- Additional JavaScript for dashboard functionality and fixes -->
+    <script>
+      // Wait for the DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        // Elements
+        const body = document.body;
+        const dashboardPage = document.getElementById('dashboard-page');
+        const websiteContent = document.getElementById('website-content');
+        const dashboardLink = document.getElementById('dashboard-link');
+        const backToHomeSidebar = document.getElementById('back-to-home-sidebar');
+        const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
+        const dashboardSidebar = document.querySelector('.dashboard-sidebar');
+        const dashboardUserIcon = document.getElementById('dashboard-user-icon');
+        const dashboardDropdown = document.getElementById('dashboard-dropdown');
+        const loginModal = document.getElementById('login-modal');
+        const registerModal = document.getElementById('register-modal');
+        const loginModalClose = document.getElementById('login-modal-close');
+        const registerModalClose = document.getElementById('register-modal-close');
+        const loginLoading = document.getElementById('login-loading');
+        const registerLoading = document.getElementById('register-loading');
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const ctaRegisterBtn = document.getElementById('cta-register-btn');
+        const googleLoginBtn = document.getElementById('google-login-btn');
+        const googleRegisterBtn = document.getElementById('google-register-btn');
+        
+        // Function to toggle between website and dashboard
+        function showDashboard() {
+          websiteContent.style.display = 'none';
+          dashboardPage.style.display = 'block';
+          body.classList.add('dashboard-active');
+          if (window.innerWidth <= 768) {
+            mobileSidebarToggle.style.display = 'block';
+          }
+        }
+        
+        function showWebsite() {
+          dashboardPage.style.display = 'none';
+          websiteContent.style.display = 'block';
+          body.classList.remove('dashboard-active');
+          mobileSidebarToggle.style.display = 'none';
+        }
+        
+        // Dashboard link click handler
+        if (dashboardLink) {
+          dashboardLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showDashboard();
+          });
+        }
+        
+        // Back to website button click handler
+        if (backToHomeSidebar) {
+          backToHomeSidebar.addEventListener('click', function(e) {
+            e.preventDefault();
+            showWebsite();
+          });
+        }
+        
+        // Mobile sidebar toggle
+        if (mobileSidebarToggle) {
+          mobileSidebarToggle.addEventListener('click', function() {
+            dashboardSidebar.classList.toggle('active');
+          });
+        }
+        
+        // Dashboard user dropdown
+        if (dashboardUserIcon && dashboardDropdown) {
+          dashboardUserIcon.addEventListener('click', function() {
+            dashboardDropdown.classList.toggle('active');
+          });
+          
+          // Close dropdown when clicking outside
+          document.addEventListener('click', function(e) {
+            if (!dashboardUserIcon.contains(e.target) && !dashboardDropdown.contains(e.target)) {
+              dashboardDropdown.classList.remove('active');
+            }
+          });
+        }
+        
+        // Tab switching in dashboard
+        const tabLinks = document.querySelectorAll('[data-tab]');
+        tabLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all tab links
+            document.querySelectorAll('[data-tab]').forEach(el => {
+              el.classList.remove('active');
+            });
+            
+            // Add active class to clicked tab link
+            this.classList.add('active');
+            
+            // Find and activate corresponding tab content
+            const targetTab = this.getAttribute('data-tab');
+            document.querySelectorAll('.tab-content').forEach(tab => {
+              tab.classList.remove('active');
+            });
+            
+            document.getElementById(targetTab + '-content').classList.add('active');
+          });
+        });
+        
+        // Close sidebar when clicking on a link (mobile)
+        const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+              dashboardSidebar.classList.remove('active');
+            }
+          });
+        });
+        
+        // Modal handling
+        function openModal(modalId) {
+          document.getElementById(modalId).classList.add('active');
+        }
+        
+        function closeModal(modalId) {
+          document.getElementById(modalId).classList.remove('active');
+          // Also hide any loading indicators
+          if (modalId === 'login-modal' && loginLoading) {
+            loginLoading.style.display = 'none';
+          } else if (modalId === 'register-modal' && registerLoading) {
+            registerLoading.style.display = 'none';
+          }
+        }
+        
+        // Login button click
+        if (loginBtn) {
+          loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('login-modal');
+          });
+        }
+        
+        // Register buttons click
+        if (registerBtn) {
+          registerBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('register-modal');
+          });
+        }
+        
+        if (ctaRegisterBtn) {
+          ctaRegisterBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('register-modal');
+          });
+        }
+        
+        // Modal close buttons
+        if (loginModalClose) {
+          loginModalClose.addEventListener('click', function() {
+            closeModal('login-modal');
+          });
+        }
+        
+        if (registerModalClose) {
+          registerModalClose.addEventListener('click', function() {
+            closeModal('register-modal');
+          });
+        }
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+          if (e.target.classList.contains('modal-overlay')) {
+            closeModal(e.target.id);
+          }
+        });
+        
+        // Mock login handler (to demonstrate closing of modal)
+        if (googleLoginBtn) {
+          googleLoginBtn.addEventListener('click', function() {
+            loginLoading.style.display = 'block';
+            
+            // Simulate authentication delay
+            setTimeout(function() {
+              closeModal('login-modal');
+              // Additional actions after login would go here
+              // For demo, we'll just show a toast
+              showToast('Successfully logged in', 'success');
+            }, 2000);
+          });
+        }
+        
+        // Mock register handler
+        if (googleRegisterBtn) {
+          googleRegisterBtn.addEventListener('click', function() {
+            registerLoading.style.display = 'block';
+            
+            // Simulate authentication delay
+            setTimeout(function() {
+              closeModal('register-modal');
+              // Additional actions after registration would go here
+              showToast('Registration successful', 'success');
+            }, 2000);
+          });
+        }
+        
+        // Show toast notification
+        function showToast(message, type = 'success') {
+          const toast = document.getElementById('toast');
+          const toastMessage = document.querySelector('.toast-message');
+          const toastTitle = document.querySelector('.toast-title');
+          
+          toastMessage.textContent = message;
+          
+          if (type === 'success') {
+            toast.classList.add('success');
+            toast.classList.remove('error');
+            toastTitle.textContent = 'Success';
+          } else {
+            toast.classList.add('error');
+            toast.classList.remove('success');
+            toastTitle.textContent = 'Error';
+          }
+          
+          toast.classList.add('show');
+          
+          setTimeout(function() {
+            toast.classList.remove('show');
+          }, 3000);
+        }
+        
+        // Toast close button
+        const toastClose = document.getElementById('toast-close');
+        if (toastClose) {
+          toastClose.addEventListener('click', function() {
+            document.getElementById('toast').classList.remove('show');
+          });
+        }
+        
+        // Adjust mobile toggle visibility on resize
+        window.addEventListener('resize', function() {
+          if (body.classList.contains('dashboard-active')) {
+            if (window.innerWidth <= 768) {
+              mobileSidebarToggle.style.display = 'block';
+            } else {
+              mobileSidebarToggle.style.display = 'none';
+              // Also ensure sidebar is visible on larger screens
+              dashboardSidebar.classList.remove('active');
+            }
+          }
+        });
+        
+        // Initialize mobile toggle visibility
+        if (window.innerWidth <= 768) {
+          mobileSidebarToggle.style.display = body.classList.contains('dashboard-active') ? 'block' : 'none';
+        }
+      });
+    </script>
   </body>
 </html>
